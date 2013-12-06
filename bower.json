@@ -1,0 +1,20 @@
+{
+  "name": "eggspire",
+  "version": "0.0.0",
+  "homepage": "https://github.com/possan/eggspire-protothon",
+  "authors": [
+    "Per-Olov Jernberg <possan@possan.se>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.0.3",
+    "momentjs": "~2.4.0"
+  }
+}
