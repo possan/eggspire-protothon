@@ -9,20 +9,20 @@
 	<header>
 		<div class="inner">
 			<div class="logo">
-				<h1><a href="index.html">Eggspire</a></h1>
+				<h1><a href="index.html">Eggspire <img src="logo.png" /></a></h1>
 			</div>
 			<div class="menu">
 				<a href="index.html">Search</a>
-				|
+				&nbsp;
 				<a href="me.html">Me</a>
-				|
+				&nbsp;
 				<a href="share.html">Share</a>
 			</div>
 		</div>
 	</header>
 
 	<section class="main">
-		<section class="content">
+		<section class="content share">
 			<h1>Share</h1>
 			<p>
 				Share at:<br/>
@@ -39,7 +39,16 @@
 			</p>
 			<p>
 				Item:<br/>
-				<input id="item" />
+				<input id="item" list="items" />
+				<datalist id="items">
+				<select name="items">
+				<option>Eggs
+				<option>Eggplant
+				<option>Lemon
+				<option>Tomato
+				<option>Tomatoes
+				</select>
+				</datalist>
 			</p>
 			<p>
 				Expiry date:<br/>
@@ -52,7 +61,8 @@
 				<button id="done" class="huge">Submit!</button>
 			</p>
 		</section>
-		<aside>
+		<aside class="image">
+			<img id="img" src="transparent.png" />
 		</aside>
 	</section>
 
@@ -70,6 +80,18 @@
 			if (cb.is(':checked')) {
 				location = 'share2.html';
 			}
+		});
+
+		$('#item').keyup(function() {
+			var v = $('#item').val().trim().toLowerCase();
+			var i = 'transparent.png';
+			if (v == 'egg') i = 'eggs.png';
+			if (v == 'eggs') i = 'eggs.png';
+			if (v == 'tomato') i = 'tomato.png';
+			if (v == 'tomatoes') i = 'tomato.png';
+			if (v == 'eggplant') i = 'eggplant.png';
+			if (v == 'lemon') i = 'lemon.png';
+			$('img#img').attr('src', i);
 		});
 
 	</script>

@@ -10,28 +10,27 @@
 	<header>
 		<div class="inner">
 			<div class="logo">
-				<h1><a href="index.html">Eggspire</a></h1>
+				<h1><a href="index.html">Eggspire <img src="logo.png" /></a></h1>
 			</div>
 			<div class="menu">
 				<a href="index.html">Search</a>
-				|
+				&nbsp;
 				<a href="me.html">Me</a>
-				|
+				&nbsp;
 				<a href="share.html">Share</a>
-			</div>
-			<div class="search">
-				<input id="q" value="" placeholder="Find free food" /></input>
 			</div>
 		</div>
 	</header>
 
 	<section class="main">
 		<section class="content">
+			<div class="searchprompt">
+				<input id="q" value="" placeholder="Find free food" type="search" /></input>
+			</div>
 			<div class="searchresults">
-				<h2 id="searchresultstitle">Search results</h2>
+				<div id="searchresultstitle"><h2>Search results</h2> Sort by: <b>Distance</b> | <a href="#">Freshness</a> | <a href="#">Quantity</a></div>
 				<h2 id="recenttitle">Recent additions</h2>
-				<ul id="results">
-				</ul>
+				<ul id="results"></ul>
 			</div>
 		</section>
 		<aside>
@@ -41,10 +40,10 @@
 			</a>
 			<div class="motivation">
 				<h3>Why?</h3>
-				670000 tonnes<br/>
-				72kg/person/yr<br/>
-				121818 elephants<br/>
-				<br/>
+				<b>670.000 tonnes</b> of food is wasted every year in
+				Sweden, that's equivalent of <b>121.818 elephants:</b><br/>
+				<img src="elephant.png" />
+				One third of that is 	unneccessary waste.
 			</div>
 		</aside>
 	</section>
@@ -60,6 +59,9 @@
 		var alldata = [
 			{ title: 'Tomatoes', image: 'tomato.png' },
 			{ title: 'Eggs', image: 'eggs.png' },
+			{ title: 'Eggplant', image: 'eggplant.png' },
+			{ title: 'Lemon', image: 'lemon.png' },
+			{ title: 'Carrot', image: 'carrot.png' },
 			{ title: 'Bread', image: 'bread.png' }
 		]
 
@@ -69,10 +71,14 @@
 			if (q == '') {
 				$('#searchresultstitle').hide();
 				$('#recenttitle').show();
+				$('ul#results').removeClass('list');
+				$('ul#results').addClass('splash');
 			} else {
 				$('#searchresultstitle').show();
 				$('#recenttitle').hide();
 				total = Math.floor(5 + Math.random() * 5);
+				$('ul#results').addClass('list');
+				$('ul#results').removeClass('splash');
 			}
 			var html = '';
 			for(var i=0; i<total; i++) {
@@ -81,14 +87,18 @@
 				data.qty = Math.floor(1 + Math.random() * 3);
 				data.distance = Math.floor(150 + Math.random() * 3000);
 				data.expires = Math.floor(2 + Math.random() * 5);
-				html += '<li><a href="reserve.html#'+encodeURIComponent(JSON.stringify(data,0,null))+'">';
+				html += '<li>';
+				html += '<a href="reserve.html#'+encodeURIComponent(JSON.stringify(data,0,null))+'">';
 				html += '<span class="image"><img src="' + data.image + '" /></span>';
 				html += '<span class="info">';
 				html += '<h4>'+data.title+'</h4>';
-				html += '<span class="qty">Quantity: '+data.qty+'</span>';
-				html += '<span class="distance">'+data.distance+' Meters</span>';
+				html += '<img src="quantity.png" /> '+data.qty+' &nbsp;&nbsp; ';
+				html += '<img src="location.png" /> '+data.distance+' Meters &nbsp;&nbsp; '
+				html += '<img src="clock.png" /> '+data.expires+' Days';
+				html += '<span class="reserve">Reserve</span>';
 				html += '</span>';
-				html += '</a></li>';
+				html += '</a>';
+				html += '</li>';
 			}
 			html += '<li class="clear"></li>';
 			$('ul#results').html(html);
