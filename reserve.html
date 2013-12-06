@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
+	<script type="text/javascript" src="bower_components/momentjs/moment.js"></script>
+	<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+	<header>
+		<div class="inner">
+			<div class="logo">
+				<h1><a href="index.html">Eggspire</a></h1>
+			</div>
+			<div class="menu">
+				<a href="index.html">Search</a>
+				|
+				<a href="me.html">Me</a>
+				|
+				<a href="share.html">Share</a>
+			</div>
+		</div>
+	</header>
+
+	<section class="main">
+		<section class="content share">
+			<h1>Tomatoes!</h1>
+			<p>
+				Quantity:<br/>
+				<b id="qty">3</b>
+			</p>
+			<p>
+				Expiration date:<br/>
+				<b id="expiry"></b>
+			</p>
+			<p>
+				<button id="done" class="huge">Reserve!</button>
+			</p>
+		</section>
+		<aside class="image">
+			<img id="img" />
+		</aside>
+	</section>
+
+	<footer>
+		<div class="inner">
+			Eggspire
+		</div>
+	</footer>
+
+	<script type="text/javascript">
+
+		var data = {};
+		data = JSON.parse(decodeURIComponent(location.hash.substring(1)));
+		console.log(data);
+
+		$('#img').attr('src', data.image);
+		$('#qty').text(data.qty);
+		$('#expiry').text(data.expires);
+
+		var q = $('button#done');
+		q.click(function() {
+			location = 'reserve2.html';
+		});
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
+	<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+	<header>
+		<div class="inner">
+			<div class="logo">
+				<h1><a href="index.html">Eggspire</a></h1>
+			</div>
+			<div class="menu">
+				<a href="index.html">Search</a>
+				|
+				<a href="me.html">Me</a>
+				|
+				<a href="share.html">Share</a>
+			</div>
+		</div>
+	</header>
+
+	<section class="main">
+		<section class="content">
+			<h1>Share</h1>
+			<p>
+				Share at:<br/>
+				<input type="radio" name="loc" value="loc1" /> My home.<br/>
+				<input type="radio" name="loc" value="loc2" />
+				<select>
+					<option>Lobby</option>
+					<option>ICA Nextdoor</option>
+				</select>
+			</p>
+			<p>
+				Quantity:<br/>
+				<input id="qty" type="number" />
+			</p>
+			<p>
+				Item:<br/>
+				<input id="item" />
+			</p>
+			<p>
+				Expiry date:<br/>
+				<input type="date" />
+			</p>
+			<p>
+				<input id="iwould" type="checkbox" /> I would eat this.
+			</p>
+			<p>
+				<button id="done" class="huge">Submit!</button>
+			</p>
+		</section>
+		<aside>
+		</aside>
+	</section>
+
+	<footer>
+		<div class="inner">
+			Eggspire
+		</div>
+	</footer>
+
+	<script type="text/javascript">
+
+		var q = $('button#done');
+		var cb = $('input#iwould');
+		q.click(function() {
+			if (cb.is(':checked')) {
+				location = 'share2.html';
+			}
+		});
+
+	</script>
+
+</body>
+</html>

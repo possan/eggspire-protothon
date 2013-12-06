@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="bower_components/jquery/jquery.js"></script>
+	<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+	<header>
+		<div class="inner">
+			<div class="logo">
+				<h1><a href="index.html">Eggspire</a></h1>
+			</div>
+			<div class="menu">
+				<a href="index.html">Search</a>
+				|
+				<a href="me.html">Me</a>
+				|
+				<a href="share.html">Share</a>
+			</div>
+		</div>
+	</header>
+
+	<section class="main">
+		<section class="content">
+			<h1>Share</h1>
+			<p>
+				Put your goods in compartment <span id="comp">X</span>, use pin <span id="pin1">X</span> to open the door.
+			</p>
+			<p>
+				<button id="done" class="huge">Done!</button>
+			</p>
+		</section>
+		<aside>
+		</aside>
+	</section>
+
+	<footer>
+		<div class="inner">
+			Eggspire
+		</div>
+	</footer>
+
+	<script type="text/javascript">
+
+		$('#comp').text('' + Math.round(10 + Math.random() * 20));
+
+		var pin = '';
+		for(var i=0; i<4; i++ ) {
+			pin += '' + Math.floor(Math.random() * 10);
+		}
+		$('#pin1').text(pin);
+
+		var q = $('button#done');
+		q.click(function() {
+			location = 'index.html';
+		});
+
+	</script>
+
+</body>
+</html>
